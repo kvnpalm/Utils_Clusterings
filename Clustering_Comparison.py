@@ -21,77 +21,7 @@ from sklearn.decomposition import TruncatedSVD
 from sklearn.manifold import TSNE
 import seaborn as sns
 import hdbscan
-
-
  
-
-# def cluster_methods(dataset,params):
-#   timec=[]
-#   # define and fit the model
-#   inicio = time.time()
-#   time.sleep(1)
-#   #model 1 
-#   model1 = AgglomerativeClustering(n_clusters=params["n_clusters"]).fit(dataset)
-#   y1 = pd.DataFrame(model1.fit_predict(dataset), columns=['y_agglomerative'])
-#   fin1 = time.time()-inicio
-#   timec.append(['Agglomerative',fin1])
-#   #model 2
-#   inicio = time.time()
-#   time.sleep(1)
-#   model2 = KMeans(n_clusters=params["n_clusters"], random_state=params["random_state"]).fit(dataset)
-#   y2 = pd.DataFrame(model2.predict(dataset), columns=['y_KMeans'])
-#   fin2 = time.time()-inicio
-#   timec.append(['KMeans',fin2])
-#   #model 3
-#   inicio = time.time()
-#   time.sleep(1)
-#   model3 = SpectralClustering(n_clusters=params["n_clusters"],assign_labels='discretize',random_state=params["random_state"]).fit(dataset)
-#   y3=  pd.DataFrame(model3.fit_predict(dataset), columns=['y_Spectral'])
-#   fin3 = time.time()-inicio
-#   timec.append(['Spectral',fin3])
-#   #model 4
-#   inicio = time.time()
-#   time.sleep(1)
-#   model4 = DBSCAN(eps=params["eps"], min_samples=params["min_samples"],algorithm='brute').fit(dataset)
-#   y4=  pd.DataFrame(model4.fit_predict(dataset), columns=['y_DBSCAN'])
-#   fin4 = time.time()-inicio
-#   timec.append(['DBSCAN',fin4])
-#   #model 5
-#   inicio = time.time()
-#   time.sleep(1)
-#   model5 = OPTICS(min_samples=params["min_samples"]).fit(dataset)
-#   y5=  pd.DataFrame(model5.fit_predict(dataset), columns=['y_OPTICS'])
-#   fin5 = time.time()-inicio
-#   timec.append(['OPTICS',fin5])
-#   #model 6
-#   inicio = time.time()
-#   time.sleep(1)
-#   model6 = Birch(n_clusters=params["n_clusters"]).fit(dataset)
-#   y6=  pd.DataFrame(model6.predict(dataset), columns=['y_Birch'])
-#   fin6 = time.time()-inicio
-#   timec.append(['Birch',fin6])
-#   #model 7
-#   inicio = time.time()
-#   time.sleep(1)
-#   model7 = FCM(n_clusters=params["n_clusters"])
-#   model7.fit(dataset)
-#   y7=  pd.DataFrame(model7.predict(dataset), columns=['y_C-Means'])
-#   fin7 = time.time()-inicio
-#   timec.append(['C-Means',fin7])
-#   #Model 8
-#   inicio = time.time()
-#   time.sleep(1)
-#   model8 =  GaussianMixture(n_components=params["n_clusters"],random_state=params["random_state"]).fit(dataset)
-#   y8=  pd.DataFrame(model8.predict(dataset), columns=['y_GaussianM'])
-#   fin8 = time.time()-inicio
-#   timec.append(['GaussianM',fin8])
-
-#   timec=pd.DataFrame(timec, columns=[['Cluster methods','time']])
-#   yhat=pd.concat([y1,y2,y3,y4,y5,y6,y7,y8],axis=1)
-  
-#   return yhat,timec
-  
-  
 def metrics_clustering(X, labels):
   m1=metrics.calinski_harabasz_score(X, labels)
   m2=metrics.silhouette_score(X, labels,metric='euclidean')
